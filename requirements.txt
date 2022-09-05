@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+pytesseract
+python-multipart
+aiofiles
+pytest
+requests
+sqlalchemy
