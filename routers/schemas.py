@@ -1,18 +1,21 @@
 from pydantic import BaseModel
 from datetime import datetime
 
-class PostBase(BaseModel):
+
+class BlogBase(BaseModel):
     image_url: str
     title: str
     content: str
     creator: str
 
-class PostDisplay(BaseModel):
+
+class BlogDisplay(BaseModel):
     id: int
     image_url: str
     title: str
     content: str
     creator: str
     timestamp: datetime
+
     class Config:
         orm_mode = True
