@@ -9,6 +9,7 @@ from database.database_session import get_db
 from database import blog
 import string
 import random
+import os
 
 router = APIRouter(prefix="/blog", tags=["blog"])
 
@@ -32,9 +33,9 @@ def delete_post(id: int, db: Session = Depends(get_db)):
 def upload_image(image: UploadFile = File(...)):
     letter = string.ascii_letters
     rand_str = "".join(random.choice(letter) for i in range(6))
-    suffix = f"_{rand_str}"
+    suffix = f"_{rand_str}."
     filename = suffix.join(image.filename.rsplit(".", 1))
-    path = f"images/{filename}"
+    path = os.path.join('images',filename)
 
     with open(path, "w+b") as buffer:
         shutil.copyfileobj(image.file, buffer)
